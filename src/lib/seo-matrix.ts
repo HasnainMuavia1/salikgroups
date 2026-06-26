@@ -13,6 +13,12 @@ import type { PakistanCity } from "@/data/pakistan-cities";
 export const DISCOVER_URL_PREFIX = "/discover";
 export const SEO_SITEMAP_CHUNK_SIZE = 500;
 
+const MODIFIER_PAGE_COUNT =
+  seoModifiers.length * seoTopics.length * pakistanCities.length;
+const BRAND_PAGE_COUNT =
+  brandSlugPrefixes.length * seoTopics.length * pakistanCities.length;
+export const DISCOVER_PAGE_COUNT = MODIFIER_PAGE_COUNT + BRAND_PAGE_COUNT;
+
 export type DiscoverPageKind = "modifier" | "brand";
 
 export type DiscoverPage = {
@@ -223,6 +229,76 @@ function createBrandPage(brand: string, topic: SeoTopic, city: PakistanCity): Di
   return page;
 }
 
+function buildSlugAtIndex(index: number): string {
+  if (index < MODIFIER_PAGE_COUNT) {
+    const cityIndex = index % pakistanCities.length;
+    const topicIndex = Math.floor(index / pakistanCities.length) % seoTopics.length;
+    const modifierIndex = Math.floor(index / (pakistanCities.length * seoTopics.length));
+    const modifier = seoModifiers[modifierIndex];
+    const topic = seoTopics[topicIndex];
+    const city = pakistanCities[cityIndex];
+    return `${modifier}-${topic.slug}-${city.slug}-pakistan`;
+  }
+
+  const brandIndex = index - MODIFIER_PAGE_COUNT;
+  const cityIndex = brandIndex % pakistanCities.length;
+  const topicIndex = Math.floor(brandIndex / pakistanCities.length) % seoTopics.length;
+  const brandPrefixIndex = Math.floor(brandIndex / (pakistanCities.length * seoTopics.length));
+  const brand = brandSlugPrefixes[brandPrefixIndex];
+  const topic = seoTopics[topicIndex];
+  const city = pakistanCities[cityIndex];
+  return `${brand}-${topic.slug}-${city.slug}-pakistan`;
+}
+
+type ParsedDiscoverSlug =
+  | { kind: "modifier"; modifier: SeoModifier; topic: SeoTopic; city: PakistanCity }
+  | { kind: "brand"; brand: string; topic: SeoTopic; city: PakistanCity };
+
+function parseDiscoverSlug(slug: string): ParsedDiscoverSlug | null {
+  if (!slug.endsWith("-pakistan")) return null;
+
+  const body = slug.slice(0, -"-pakistan".length);
+  const citiesByLength = [...pakistanCities].sort((a, b) => b.slug.length - a.slug.length);
+  const topicsByLength = [...seoTopics].sort((a, b) => b.slug.length - a.slug.length);
+
+  for (const city of citiesByLength) {
+    const citySuffix = `-${city.slug}`;
+    if (!body.endsWith(citySuffix)) continue;
+
+    const prefix = body.slice(0, -citySuffix.length);
+
+    for (const topic of topicsByLength) {
+      const topicSuffix = `-${topic.slug}`;
+      let head: string;
+
+      if (prefix.endsWith(topicSuffix)) {
+        head = prefix.slice(0, -topicSuffix.length);
+      } else if (prefix === topic.slug) {
+        head = "";
+      } else {
+        continue;
+      }
+
+      if (head && seoModifiers.includes(head as SeoModifier)) {
+        return { kind: "modifier", modifier: head as SeoModifier, topic, city };
+      }
+
+      if (head && brandSlugPrefixes.includes(head as (typeof brandSlugPrefixes)[number])) {
+        return { kind: "brand", brand: head, topic, city };
+      }
+    }
+  }
+
+  return null;
+}
+
+function createPageFromParsed(parsed: ParsedDiscoverSlug): DiscoverPage {
+  if (parsed.kind === "modifier") {
+    return createModifierPage(parsed.modifier, parsed.topic, parsed.city);
+  }
+  return createBrandPage(parsed.brand, parsed.topic, parsed.city);
+}
+
 export function generateDiscoverPages(): DiscoverPage[] {
   if (cachedPages) return cachedPages;
 
@@ -259,27 +335,41 @@ export function generateDiscoverPages(): DiscoverPage[] {
 }
 
 export function getDiscoverPageCount() {
-  return generateDiscoverPages().length;
+  return DISCOVER_PAGE_COUNT;
 }
 
 export function getDiscoverPageBySlug(slug: string) {
-  if (!cachedSlugSet) generateDiscoverPages();
-  if (!cachedSlugSet?.has(slug)) return null;
-  return generateDiscoverPages().find((page) => page.slug === slug) ?? null;
+  const parsed = parseDiscoverSlug(slug);
+  if (!parsed) return null;
+  return createPageFromParsed(parsed);
 }
 
 export function getAllDiscoverSlugs() {
-  return generateDiscoverPages().map((page) => page.slug);
+  return Array.from({ length: DISCOVER_PAGE_COUNT }, (_, index) => buildSlugAtIndex(index));
 }
 
 export function getDiscoverSitemapChunkCount() {
-  return Math.ceil(getDiscoverPageCount() / SEO_SITEMAP_CHUNK_SIZE);
+  return Math.ceil(DISCOVER_PAGE_COUNT / SEO_SITEMAP_CHUNK_SIZE);
+}
+
+export function getDiscoverSlugChunk(chunkIndex: number) {
+  const start = chunkIndex * SEO_SITEMAP_CHUNK_SIZE;
+  const end = Math.min(start + SEO_SITEMAP_CHUNK_SIZE, DISCOVER_PAGE_COUNT);
+  const slugs: string[] = [];
+
+  for (let index = start; index < end; index += 1) {
+    slugs.push(buildSlugAtIndex(index));
+  }
+
+  return slugs;
 }
 
 export function getDiscoverPagesChunk(chunkIndex: number) {
-  const pages = generateDiscoverPages();
-  const start = chunkIndex * SEO_SITEMAP_CHUNK_SIZE;
-  return pages.slice(start, start + SEO_SITEMAP_CHUNK_SIZE);
+  return getDiscoverSlugChunk(chunkIndex).map((slug) => {
+    const page = getDiscoverPageBySlug(slug);
+    if (!page) throw new Error(`Missing discover page for slug: ${slug}`);
+    return page;
+  });
 }
 
 export function getDiscoverPath(slug: string) {
@@ -287,13 +377,33 @@ export function getDiscoverPath(slug: string) {
 }
 
 export function getRelatedDiscoverPages(current: DiscoverPage, limit = 6) {
-  const pages = generateDiscoverPages().filter(
-    (page) =>
-      page.slug !== current.slug &&
-      (page.topic.slug === current.topic.slug || page.city.slug === current.city.slug),
-  );
-  const start = hashString(current.slug) % Math.max(1, pages.length - limit);
-  return pages.slice(start, start + limit);
+  const related: DiscoverPage[] = [];
+  const topicIndex = seoTopics.findIndex((topic) => topic.slug === current.topic.slug);
+  const cityIndex = pakistanCities.findIndex((city) => city.slug === current.city.slug);
+
+  for (let offset = 1; offset <= limit * 2 && related.length < limit; offset += 1) {
+    const nextCity = pakistanCities[(cityIndex + offset) % pakistanCities.length];
+    const slug =
+      current.kind === "brand" && current.brand
+        ? `${current.brand}-${current.topic.slug}-${nextCity.slug}-pakistan`
+        : `${current.modifier}-${current.topic.slug}-${nextCity.slug}-pakistan`;
+    const page = getDiscoverPageBySlug(slug);
+    if (page && page.slug !== current.slug) related.push(page);
+  }
+
+  for (let offset = 1; offset <= limit && related.length < limit; offset += 1) {
+    const nextTopic = seoTopics[(topicIndex + offset) % seoTopics.length];
+    const slug =
+      current.kind === "brand" && current.brand
+        ? `${current.brand}-${nextTopic.slug}-${current.city.slug}-pakistan`
+        : `${current.modifier}-${nextTopic.slug}-${current.city.slug}-pakistan`;
+    const page = getDiscoverPageBySlug(slug);
+    if (page && page.slug !== current.slug && !related.some((item) => item.slug === page.slug)) {
+      related.push(page);
+    }
+  }
+
+  return related.slice(0, limit);
 }
 
 export function parseDiscoverTopic(slug: string) {

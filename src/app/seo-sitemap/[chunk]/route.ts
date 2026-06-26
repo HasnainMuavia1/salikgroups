@@ -1,6 +1,6 @@
 import { seoConfig } from "@/config/seo";
 import {
-  getDiscoverPagesChunk,
+  getDiscoverSlugChunk,
   getDiscoverSitemapChunkCount,
 } from "@/lib/seo-matrix";
 
@@ -8,11 +8,23 @@ type RouteContext = {
   params: Promise<{ chunk: string }>;
 };
 
+export const revalidate = 86400;
+export const dynamic = "force-static";
+
 export async function generateStaticParams() {
   const count = getDiscoverSitemapChunkCount();
   return Array.from({ length: count }, (_, index) => ({
     chunk: String(index),
   }));
+}
+
+function escapeXml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
 }
 
 export async function GET(_request: Request, context: RouteContext) {
@@ -23,13 +35,13 @@ export async function GET(_request: Request, context: RouteContext) {
     return new Response("Not found", { status: 404 });
   }
 
-  const pages = getDiscoverPagesChunk(chunkIndex);
+  const slugs = getDiscoverSlugChunk(chunkIndex);
   const now = new Date().toISOString();
 
-  const urls = pages
+  const urls = slugs
     .map(
-      (page) => `  <url>
-    <loc>${seoConfig.siteUrl}/discover/${page.slug}</loc>
+      (slug) => `  <url>
+    <loc>${escapeXml(`${seoConfig.siteUrl}/discover/${slug}`)}</loc>
     <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
@@ -45,7 +57,7 @@ ${urls}
   return new Response(xml, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, s-maxage=86400",
+      "Cache-Control": "public, max-age=86400, s-maxage=86400",
     },
   });
 }
