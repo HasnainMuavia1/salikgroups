@@ -6,11 +6,39 @@ import { siteConfig } from "@/config/site";
 import { useState, type FormEvent } from "react";
 
 export function ContactSection() {
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name") as string;
+    const company = formData.get("company") as string;
+    const phone = formData.get("phone") as string;
+    const service = formData.get("service") as string;
+    const details = formData.get("details") as string;
+
+    try {
+      await fetch("/api/survey", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, company, phone, service, details }),
+      });
+
+      const textMessage = `Hi Salik Groups & Co, I would like to request a technical survey.\n\n*Name:* ${name}\n*Company:* ${company || "N/A"}\n*Phone:* ${phone}\n*Service:* ${service}\n*Details:* ${details}`;
+      const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
+
+      window.open(whatsappUrl, "_blank");
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Survey submission failed:", error);
+      alert("Failed to submit survey. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -75,7 +103,7 @@ export function ContactSection() {
                 <label className="text-[13px] font-semibold text-[#aab4cf]">
                   Service required
                 </label>
-                <select className="rounded-sg-sm border border-white/13 bg-[rgba(10,20,48,0.6)] px-[15px] py-[13px] text-[15px] text-white outline-none">
+                <select name="service" className="rounded-sg-sm border border-white/13 bg-[rgba(10,20,48,0.6)] px-[15px] py-[13px] text-[15px] text-white outline-none">
                   {serviceFormOptions.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
@@ -86,6 +114,7 @@ export function ContactSection() {
                   Project details
                 </label>
                 <textarea
+                  name="details"
                   required
                   rows={4}
                   placeholder="Tell us about your site and requirements…"
@@ -94,9 +123,10 @@ export function ContactSection() {
               </div>
               <button
                 type="submit"
-                className="sm:col-span-2 rounded-xl border-none bg-sg-accent px-4 py-4 text-base font-bold text-sg-hero shadow-[0_12px_30px_rgba(244,159,28,0.28)] transition-transform hover:-translate-y-0.5"
+                disabled={submitting}
+                className="sm:col-span-2 rounded-xl border-none bg-sg-accent px-4 py-4 text-base font-bold text-sg-hero shadow-[0_12px_30px_rgba(244,159,28,0.28)] transition-transform hover:-translate-y-0.5 disabled:opacity-50"
               >
-                Request a Technical Survey
+                {submitting ? "Requesting Survey..." : "Request a Technical Survey"}
               </button>
             </form>
           )}

@@ -2,7 +2,6 @@
 
 import { Footer } from "@/components/layout/footer";
 import { SiteShell } from "@/components/layout/site-shell";
-import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { FeaturedReviewsSection } from "@/components/sections/featured-reviews-section";
 import { FeaturesStripSection } from "@/components/sections/features-strip-section";
@@ -14,7 +13,7 @@ import { PlatformRatingsSection } from "@/components/sections/platform-ratings-s
 import { ProcessSection } from "@/components/sections/process-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { ServicesSection } from "@/components/sections/services-section";
-import { TeamSection } from "@/components/sections/team-section";
+
 import { TrustStatsSection } from "@/components/sections/trust-stats-section";
 import { WhyUsSection } from "@/components/sections/why-us-section";
 
@@ -24,8 +23,6 @@ export function HomePage() {
       <main>
         <HeroSection />
         <PlatformRatingsSection />
-        <AboutSection />
-        <TeamSection />
         <TrustStatsSection />
         <ServicesSection />
         <FeaturesStripSection />

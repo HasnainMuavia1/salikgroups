@@ -31,6 +31,7 @@ export type Project = {
   highlights: string[];
   deliverables: string[];
   metaDescription: string;
+  coverImage?: string;
 };
 
 export type Service = {
@@ -48,6 +49,7 @@ export type Service = {
   capabilities: string[];
   deliverables: string[];
   industries: string[];
+  coverImage?: string;
 };
 
 export type TeamMember = {
@@ -64,6 +66,7 @@ export type FieldWorkShowcase = {
   title: string;
   description: string;
   images: string[];
+  coverImage?: string;
 };
 
 export type Industry = {

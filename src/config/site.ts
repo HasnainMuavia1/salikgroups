@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Salik Groups & Co",
   logoSrc: "/sallikLogo.svg",
-  emblemSrc: "/emblem (1).svg",
+  emblemSrc: "/emblem.svg",
   brand: {
     primary: "SALIK",
     accent: "GROUPS & CO",
@@ -17,9 +17,9 @@ export const siteConfig = {
     whatsappNumber: "923045050750",
     whatsappMessage:
       "Visited your website would like to get information about your services.",
-    email: "salikenterprises7@gmail.com",
-    emailHref: "mailto:salikenterprises7@gmail.com",
-    address: "49 The Mall Road, Lahore",
+    email: "Salikgroups7@gmail.com",
+    emailHref: "mailto:Salikgroups7@gmail.com",
+    address: "The Mall Road, Lahore",
     secondaryOffice: "Office 2 — Sadar, Karachi · Coming Soon",
   },
   copyright: "© 2026 Salik Groups & Co. All rights reserved.",

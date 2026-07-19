@@ -35,12 +35,12 @@ export const projectCoverImages = {
 } as const;
 
 export const serviceCoverImages = {
-  "solar-energy": firstGalleryImage("/media/projects/solar/panels"),
-  "cctv-surveillance": firstGalleryImage("/media/projects/safe-city"),
-  "electric-fencing": firstGalleryImage("/media/projects/electric-fence"),
-  generators: firstGalleryImage("/media/services/generators"),
-  "enterprise-networking": firstGalleryImage("/media/projects/networking"),
-  "video-intercom": firstGalleryImage("/media/capabilities/emergency-buttons"),
+  "solar-energy": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=72&auto=format&fit=crop",
+  "cctv-surveillance": "https://images.unsplash.com/photo-1528319725582-ddc096101511?w=1200&q=72&auto=format&fit=crop",
+  "electric-fencing": "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?w=1200&q=72&auto=format&fit=crop",
+  generators: "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?w=1200&q=72&auto=format&fit=crop",
+  "enterprise-networking": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=72&auto=format&fit=crop",
+  "video-intercom": "https://images.unsplash.com/photo-1558002038-1055907df827?w=1200&q=72&auto=format&fit=crop",
 } as const;
 
 export const teamMembers: TeamMember[] = [
@@ -75,6 +75,7 @@ export const fieldWorkShowcases: FieldWorkShowcase[] = [
     description:
       "On-site panel mounting, alignment and integration for high-yield commercial and industrial rooftops.",
     images: galleryPaths("/media/projects/solar/panels", 14),
+    coverImage: "/media/ai/solar_panels_cover.webp",
   },
   {
     id: "solar-inverters",
@@ -83,6 +84,7 @@ export const fieldWorkShowcases: FieldWorkShowcase[] = [
     description:
       "Inverter commissioning, cabling discipline and hybrid configurations built for reliable long-term output.",
     images: galleryPaths("/media/projects/solar/inverters", 14),
+    coverImage: "/media/ai/solar_inverters_cover.webp",
   },
   {
     id: "hybrid-250kv",
@@ -91,6 +93,7 @@ export const fieldWorkShowcases: FieldWorkShowcase[] = [
     description:
       "High-capacity hybrid inverter installations engineered for demanding load profiles.",
     images: galleryPaths("/media/projects/solar/hybrid-250kv", 2),
+    coverImage: "/media/ai/solar_hybrid_250kv_cover.webp",
   },
   {
     id: "generators",
@@ -99,6 +102,7 @@ export const fieldWorkShowcases: FieldWorkShowcase[] = [
     description:
       "Standby generator deployments for sites that cannot afford power interruptions.",
     images: galleryPaths("/media/services/generators", 2),
+    coverImage: "/media/ai/generators_cover.webp",
   },
   {
     id: "emergency-buttons",
@@ -107,6 +111,7 @@ export const fieldWorkShowcases: FieldWorkShowcase[] = [
     description:
       "Panic and emergency call-point systems installed, tested and handed over for sensitive facilities.",
     images: galleryPaths("/media/capabilities/emergency-buttons", 1),
+    coverImage: "/media/ai/emergency_buttons_cover.webp",
   },
 ];
 

@@ -42,7 +42,7 @@ export function ProjectsSection() {
                       className="relative min-h-[180px] flex-1 overflow-hidden sm:min-h-[220px]"
                     >
                       <Image
-                        src={project.image}
+                        src={project.coverImage || project.image}
                         alt={project.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"

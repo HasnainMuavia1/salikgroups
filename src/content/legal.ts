@@ -66,7 +66,7 @@ export const privacyPolicySections = [
     title: "8. Changes & contact",
     paragraphs: [
       "We may update this Privacy Policy from time to time. The “Last updated” date at the top of this page will reflect the latest version.",
-      "For privacy-related questions, contact Salik Groups & Co at salikenterprises7@gmail.com or 49 The Mall Road, Lahore, Pakistan.",
+      "For privacy-related questions, contact Salik Groups & Co at Salikgroups7@gmail.com or The Mall Road, Lahore, Pakistan.",
     ],
   },
 ] as const;
@@ -123,7 +123,7 @@ export const termsSections = [
   {
     title: "9. Contact",
     paragraphs: [
-      "For questions about these Terms & Conditions, contact Salik Groups & Co at salikenterprises7@gmail.com or +92 304 5050750.",
+      "For questions about these Terms & Conditions, contact Salik Groups & Co at Salikgroups7@gmail.com or +92 304 5050750.",
     ],
   },
 ] as const;

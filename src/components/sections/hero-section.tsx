@@ -10,7 +10,7 @@ export function HeroSection() {
       className="relative overflow-hidden bg-sg-hero sg-section-x pb-12 pt-8 text-[#f3f6fc] sm:pb-[90px] sm:pt-12"
     >
       <Image
-        src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1600&q=70&auto=format&fit=crop"
+        src="/media/ai/hero_background.webp"
         alt=""
         fill
         priority

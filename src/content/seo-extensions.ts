@@ -10,7 +10,7 @@ export const serviceSeoExtensions: Record<string, SeoExtension> = {
         title: "Solar panel salikgroups — real field deployments",
         paragraphs: [
           "Clients searching for solar panel salikgroups or inverters salikgroups find documented proof of our work — 14+ site photos of panel mounting and inverter commissioning across live commercial projects. We do not sell panels without engineering oversight.",
-          "Our solar energy team handles feasibility, net-metering-ready design, equipment supply, installation, testing and after-sales support from our Lahore office at 49 The Mall Road.",
+          "Our solar energy team handles feasibility, net-metering-ready design, equipment supply, installation, testing and after-sales support from our Lahore office at The Mall Road.",
         ],
       },
     ],

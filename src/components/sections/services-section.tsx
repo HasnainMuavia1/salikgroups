@@ -36,13 +36,12 @@ export function ServicesSection() {
                         className="relative block h-28 w-full overflow-hidden sm:h-36 md:h-40"
                       >
                         <Image
-                          src={service.image}
+                          src={service.coverImage || service.image}
                           alt={service.title}
                           fill
                           className="object-cover transition-transform duration-500 hover:scale-105"
                           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 320px"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-sg-surface via-sg-surface/55 to-sg-surface/15" />
                         {hasGallery ? (
                           <span className="absolute right-3 top-3 rounded-sg-pill border border-white/12 bg-[rgba(10,20,48,0.78)] px-2.5 py-1 text-[10px] font-bold text-sg-accent backdrop-blur-sm sm:text-xs">
                             {photoCount} photos

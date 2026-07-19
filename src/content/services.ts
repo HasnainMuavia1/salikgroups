@@ -10,6 +10,7 @@ export const services: Service[] = [
     description:
       "Commercial, hybrid and high-capacity solar systems engineered for energy yield, reliability and long-term cost efficiency.",
     image: serviceCoverImages["solar-energy"],
+    coverImage: "/media/ai/solar_energy_service.webp",
     gallery: [...serviceGalleries["solar-energy"]],
     icon: "solar",
     metaDescription:
@@ -54,6 +55,7 @@ export const services: Service[] = [
     description:
       "Scalable surveillance with site surveys, camera installation, structured cabling, networking and centralised monitoring.",
     image: serviceCoverImages["cctv-surveillance"],
+    coverImage: "/media/ai/cctv_surveillance_service.webp",
     gallery: [...serviceGalleries["cctv-surveillance"]],
     icon: "cctv",
     metaDescription:
@@ -99,6 +101,7 @@ export const services: Service[] = [
       "IP-PBX and exchange systems planned, installed and configured for clear, reliable multi-line voice communication.",
     image:
       "https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=1200&q=72&auto=format&fit=crop",
+    coverImage: "/media/ai/telephone_exchange_service.webp",
     icon: "telephone",
     metaDescription:
       "IP-PBX and telephone exchange installation in Pakistan — multi-line voice systems planned, configured and supported by Salik Groups & Co.",
@@ -142,6 +145,7 @@ export const services: Service[] = [
     description:
       "Safety-compliant perimeter security that deters intrusion and strengthens protection at sensitive sites.",
     image: serviceCoverImages["electric-fencing"],
+    coverImage: "/media/ai/electric_fencing_service.webp",
     gallery: [...serviceGalleries["electric-fencing"]],
     icon: "fence",
     metaDescription:
@@ -186,6 +190,7 @@ export const services: Service[] = [
     description:
       "Standby power supply, installation and synchronisation for uninterrupted operation during outages.",
     image: serviceCoverImages.generators,
+    coverImage: "/media/ai/generators_service.webp",
     gallery: [...serviceGalleries.generators],
     icon: "generator",
     metaDescription:
@@ -230,6 +235,7 @@ export const services: Service[] = [
     description:
       "Audio-video door entry and access systems for secure, convenient visitor management.",
     image: serviceCoverImages["video-intercom"],
+    coverImage: "/media/ai/video_intercom_service.webp",
     gallery: [...serviceGalleries["video-intercom"]],
     icon: "intercom",
     metaDescription:
@@ -275,6 +281,7 @@ export const services: Service[] = [
       "Biometric and RFID time-and-attendance systems integrated with access control and reporting.",
     image:
       "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=1200&q=72&auto=format&fit=crop",
+    coverImage: "/media/ai/attendance_machines_service.webp",
     icon: "attendance",
     metaDescription:
       "Biometric and RFID attendance systems in Pakistan — time tracking, access control and reporting by Salik Groups & Co.",
@@ -318,6 +325,7 @@ export const services: Service[] = [
     description:
       "Structured networks and secure point-to-point wireless links — planned, installed, configured and tested.",
     image: serviceCoverImages["enterprise-networking"],
+    coverImage: "/media/ai/enterprise_networking_service.webp",
     gallery: [...serviceGalleries["enterprise-networking"]],
     icon: "network",
     metaDescription:
@@ -363,6 +371,7 @@ export const services: Service[] = [
       "Servers, workstations, software coordination and enterprise hardware supply, setup and integration.",
     image:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=72&auto=format&fit=crop",
+    coverImage: "/media/ai/it_solutions_service.webp",
     icon: "it",
     metaDescription:
       "Enterprise I.T. solutions in Pakistan — servers, workstations, hardware supply, setup and integration by Salik Groups & Co.",
@@ -402,29 +411,30 @@ export const services: Service[] = [
     id: "repair",
     slug: "repairing-centre",
     shortLabel: "Repairs",
-    title: "Repairing Centre",
+    title: "Warranty & Repair Center",
     description:
-      "Diagnostics, maintenance and after-sales repair for cameras, networks, power and electronic systems.",
+      "Diagnostics, maintenance and after-sales repair including:\n• Solar System Repair & Service Center\n• UPS Repair & Service Center\n• Battery Repair & Service Center\n• LED Repair & Service Center\n• CCTV Repair & Service Center\n• DVR Repair & Service Center\n• NVR Repair & Service Center",
     image:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1200&q=72&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1597733336794-12d05021d510?w=1200&q=72&auto=format&fit=crop",
+    coverImage: "/media/ai/repair_service.webp",
     icon: "repair",
     metaDescription:
-      "Electronics repair centre in Pakistan — diagnostics and after-sales support for CCTV, networking, power and security systems by Salik Groups & Co.",
+      "Warranty & Repair Center in Pakistan — diagnostics and after-sales support for Solar, UPS, Battery, LED, and CCTV systems by Salik Groups & Co.",
     tagline:
       "Diagnostics, maintenance and after-sales repair under one roof.",
     overview: [
-      "Salik Groups & Co operates a repairing centre that supports the systems we install — and third-party equipment — with diagnostics, maintenance and after-sales repair.",
-      "Our technicians handle cameras, network devices, power equipment and electronic security hardware, helping clients extend asset life and minimise downtime.",
-      "Because we also design and install these systems, our repair team understands field conditions, integration requirements and the urgency of getting sites operational again.",
+      "Salik Groups & Co operates a Warranty & Repair Center that supports the systems we install — and third-party equipment — with diagnostics, maintenance and after-sales repair.",
+      "Our diagnostic facility is led by Mr. Muhammad Fayyaz, Head of Technical Support. He holds advanced technical credentials in Electrical Engineering and brings extensive field experience in troubleshooting solar energy systems, CCTV networks, UPS units, and industrial electronic equipment.",
+      "By integrating Mr. Fayaz's expertise with certified tools, we guarantee high-fidelity troubleshooting and quick turnaround times, helping clients extend asset life and minimise downtime.",
     ],
     capabilities: [
-      "CCTV camera and NVR diagnostics and repair",
-      "Network switch, router and wireless device servicing",
-      "Power supply, UPS and generator component repair",
-      "Biometric and access-control device maintenance",
-      "Preventive maintenance and health checks",
-      "On-site and workshop-based repair options",
-      "Spare parts coordination and replacement",
+      "Solar System Repair & Service Center",
+      "UPS Repair & Service Center",
+      "Battery Repair & Service Center",
+      "LED Repair & Service Center",
+      "CCTV Repair & Service Center",
+      "DVR Repair & Service Center",
+      "NVR Repair & Service Center",
     ],
     deliverables: [
       "Fault diagnosis and repair assessment report",
@@ -465,6 +475,6 @@ export const serviceFormOptions = [
   "Attendance Machine",
   "Networking",
   "I.T. Solutions",
-  "Repairing Centre",
+  "Warranty & Repair Center",
   "Other",
 ] as const;

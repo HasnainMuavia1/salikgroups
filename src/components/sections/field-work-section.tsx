@@ -45,7 +45,7 @@ export function FieldWorkSection() {
             const cardContent = (
               <>
                 <Image
-                  src={showcase.images[0]}
+                  src={showcase.coverImage || showcase.images[0]}
                   alt={showcase.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"

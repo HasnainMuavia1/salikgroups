@@ -176,6 +176,46 @@ export const allReviews: PlatformReview[] = [
     date: "2 months ago",
     text: "Biometric attendance across three floors with HR reporting software that is easy to adopt. Professional delivery from survey through handover.",
   },
+  {
+    id: "g4",
+    platform: "google",
+    name: "Mian Umar",
+    initials: "MU",
+    avatarColor: "#4285f4",
+    rating: 5,
+    date: "3 weeks ago",
+    text: "Very professional installation of UPS backup systems and LED lighting. Excellent response time and highly trained technicians.",
+  },
+  {
+    id: "l4",
+    platform: "linkedin",
+    name: "Engr. Naveed Ahmed",
+    initials: "NA",
+    avatarColor: "#0a66c2",
+    rating: 5,
+    date: "1 month ago",
+    text: "Excellent experience working with Salik Groups & Co for our corporate network upgrade and firewall setup. Highly reliable partnership.",
+  },
+  {
+    id: "f4",
+    platform: "facebook",
+    name: "Farhan Shah",
+    initials: "FS",
+    avatarColor: "#3b5998",
+    rating: 5,
+    date: "1 month ago",
+    text: "Our industrial generator setup was installed and configured within the promised timeframe. Great post-installation support by the team.",
+  },
+  {
+    id: "i4",
+    platform: "instagram",
+    name: "Zoya Butt",
+    initials: "ZB",
+    avatarColor: "#c13584",
+    rating: 5,
+    date: "2 weeks ago",
+    text: "Great experience with their CCTV team. The cameras and monitoring software are very easy to use, and they did the cabling so neatly!",
+  },
 ];
 
 export function getReviewsByPlatform(platform: ReviewPlatform) {
@@ -183,9 +223,13 @@ export function getReviewsByPlatform(platform: ReviewPlatform) {
 }
 
 export function getFeaturedReviews() {
-  return reviewPlatforms
-    .map((platform) => allReviews.find((review) => review.platform === platform))
-    .filter((review): review is PlatformReview => Boolean(review));
+  const featured: PlatformReview[] = [];
+  reviewPlatforms.forEach((platform) => {
+    const platformReviews = allReviews.filter((review) => review.platform === platform);
+    if (platformReviews[0]) featured.push(platformReviews[0]);
+    if (platformReviews[1]) featured.push(platformReviews[1]);
+  });
+  return featured;
 }
 
 export function getTotalReviewCount() {

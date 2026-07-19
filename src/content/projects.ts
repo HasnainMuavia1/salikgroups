@@ -14,6 +14,7 @@ export const projects: Project[] = [
       "34 sites in Sialkot, 54 in Sheikhupura and 400+ CCTV cameras surveyed, installed and commissioned.",
     image: projectCoverImages["safe-city"],
     gallery: [...projectGalleries["safe-city"]],
+    coverImage: "/media/ai/safe_city_cover.webp",
     overview: [
       "Salik Groups & Co implemented Safe City projects in District Sialkot (34 sites) and District Sheikhupura (54 sites), where more than 400+ CCTV cameras were installed and made fully operational.",
       "The work included site surveys, camera installation, structured cabling, network setup, and connection with centralized monitoring systems.",
@@ -48,6 +49,7 @@ export const projects: Project[] = [
       "63 HIKVISION LED panels supplied, programmed and commissioned for centralised real-time visual control.",
     image: projectCoverImages["video-wall"],
     gallery: [...projectGalleries["video-wall"]],
+    coverImage: "/media/ai/video_wall_cover.webp",
     overview: [
       "Salik Groups & Co successfully completed the video wall installation project at EPA & CCD Green Building, Lahore, in 2025, involving the supply, installation, programming, and commissioning of 63 HIKVISION LED display panels.",
       "The project required precise alignment, structured power and data integration, system programming, and centralized control configuration to ensure smooth and uninterrupted display performance.",
@@ -82,6 +84,7 @@ export const projects: Project[] = [
       "A durable, safety-compliant perimeter solution supplied, installed, tested and commissioned.",
     image: projectCoverImages["electric-fence"],
     gallery: [...projectGalleries["electric-fence"]],
+    coverImage: "/media/ai/electric_fence_cover.webp",
     overview: [
       "Salik Groups & Co successfully completed the Electric Fence Installation Project in District Lahore during 2025, delivering a reliable and high-performance perimeter security solution.",
       "The project included site assessment, supply, installation, testing, and commissioning of electric fencing systems designed to enhance security and prevent unauthorized access.",
@@ -116,6 +119,7 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=72&auto=format&fit=crop",
     gallery: [],
+    coverImage: "/media/ai/uvss_cover.webp",
     overview: [
       "Salik Groups & Co successfully completed the Under Vehicle Scanning System (UVSS) installation project for the Counter Terrorism Department (CTD), delivering a reliable and high-security vehicle inspection solution.",
       "The scope of work included supply, installation, system configuration, and commissioning of the UVSS, integrated with monitoring stations to enable real-time under-vehicle inspection and threat detection.",
@@ -149,6 +153,7 @@ export const projects: Project[] = [
       "Secure point-to-point and point-to-multipoint links planned, aligned, optimised and commissioned.",
     image: projectCoverImages.networking,
     gallery: [...projectGalleries.networking],
+    coverImage: "/media/ai/networking_cover.webp",
     overview: [
       "Salik Groups & Co successfully completed the Ubiquiti wireless network link installation project in District Lahore during 2024, delivering a high-performance and reliable connectivity solution.",
       "The project involved site survey, link planning, installation, configuration, alignment, and commissioning of Ubiquiti wireless equipment to establish secure and stable point-to-point and point-to-multipoint communication links.",
@@ -182,6 +187,7 @@ export const projects: Project[] = [
       "Load analysis, system design, panel & inverter supply, installation and commissioning for efficient power.",
     image: projectCoverImages.solar,
     gallery: [...projectGalleries.solar],
+    coverImage: "/media/ai/solar_epc_cover.webp",
     overview: [
       "Salik Groups & Co delivers comprehensive high-capacity solar energy systems designed to meet the growing power demands of government institutions, industrial facilities, commercial complexes, and large infrastructures.",
       "This project covered load analysis, system design, panel and inverter supply, installation and commissioning — following international safety and engineering standards with strict quality control and performance testing.",
