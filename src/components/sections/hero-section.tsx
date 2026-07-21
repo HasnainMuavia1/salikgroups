@@ -14,10 +14,10 @@ export function HeroSection() {
         alt=""
         fill
         priority
-        className="object-cover opacity-[0.14]"
+        className="object-cover opacity-[0.35]"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,20,48,0.7)] via-[rgba(10,20,48,0.55)] to-sg-hero" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,20,48,0.5)] via-[rgba(10,20,48,0.35)] to-sg-hero/90" />
       <div className="pointer-events-none absolute -right-[5%] -top-[10%] h-[680px] w-[680px] rounded-full bg-[radial-gradient(circle,rgba(244,159,28,0.2),rgba(244,159,28,0)_62%)] animate-[sg-pulse-soft_8s_ease-in-out_infinite]" />
       <div className="pointer-events-none absolute -bottom-[20%] -left-[10%] h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle,rgba(0,165,224,0.14),rgba(0,165,224,0)_64%)] animate-[sg-pulse-soft_10s_ease-in-out_infinite_1s]" />
 

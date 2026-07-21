@@ -3,6 +3,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { partnerGroups } from "@/content/partners";
 import { cn } from "@/lib/cn";
 import { getProductAnchor } from "@/lib/products";
+import Image from "next/image";
 
 const categoryMeta = {
   Inverters: {
@@ -98,7 +99,15 @@ const categoryMeta = {
 
 export function PartnersSection() {
   return (
-    <section id="partners" className="relative sg-section-x pb-16 pt-5 sm:pb-[110px]">
+    <section id="partners" className="relative overflow-hidden sg-section-x pb-16 pt-5 sm:pb-[110px]">
+      <Image
+        src="/media/ai/partners_background.webp"
+        alt=""
+        fill
+        className="object-cover opacity-[0.25]"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-sg-hero via-sg-hero/85 to-sg-hero" />
       <div className="relative mx-auto max-w-[var(--spacing-container)]">
         <Reveal>
           <SectionHeader
@@ -118,7 +127,7 @@ export function PartnersSection() {
               <Reveal key={group.category} delay={index * 90} className="h-full">
                 <article
                   id={getProductAnchor(group.category)}
-                  className="group relative flex h-full scroll-mt-36 flex-col overflow-hidden rounded-sg-xl border border-sg-border bg-sg-panel p-5 shadow-[0_12px_32px_rgba(0,0,0,0.32)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-sg-accent/40 hover:shadow-[0_20px_48px_rgba(0,0,0,0.45)] sm:p-6"
+                  className="group relative flex h-full scroll-mt-36 flex-col overflow-hidden rounded-sg-xl border border-white/10 bg-gradient-to-b from-[rgba(25,35,64,0.65)] to-[rgba(10,20,48,0.3)] p-5 shadow-[0_12px_32px_rgba(0,0,0,0.4)] backdrop-blur-md transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-sg-accent/40 hover:shadow-[0_20px_48px_rgba(0,0,0,0.55)] sm:p-6"
                 >
                   <div
                     className={cn(
@@ -156,7 +165,7 @@ export function PartnersSection() {
                       <li key={brand}>
                         <span
                           className={cn(
-                            "flex h-full min-h-[42px] items-center rounded-sg-sm border border-white/25 bg-white px-3 py-2 font-display text-[12px] font-bold leading-tight text-[#0e1b3e] shadow-[0_3px_10px_rgba(0,0,0,0.22)] transition-[border-color,background-color,transform] duration-200 hover:-translate-y-px sm:min-h-[44px] sm:px-3.5 sm:text-[13px]",
+                            "flex h-full min-h-[42px] items-center rounded-sg-md border border-white/8 bg-[rgba(10,20,48,0.5)] px-3 py-2 font-display text-[12px] font-bold leading-tight text-[#d1d9ec] shadow-[0_4px_12px_rgba(0,0,0,0.18)] transition-[border-color,background-color,color,transform] duration-300 hover:-translate-y-px hover:scale-[1.02] hover:text-white sm:min-h-[44px] sm:px-3.5 sm:text-[13px]",
                             meta.chipHover,
                           )}
                         >

@@ -7,13 +7,13 @@ export function WhyUsSection() {
     <section className="sg-section-x pb-16 pt-5 sm:pb-[100px] sm:pt-[30px]">
       <div className="relative mx-auto max-w-[var(--spacing-container)] overflow-hidden rounded-sg-2xl border border-white/10 bg-gradient-to-br from-[rgba(31,55,106,0.55)] to-[rgba(10,20,48,0.2)] p-6 text-[#f3f6fc] sm:p-[clamp(34px,5vw,64px)]">
         <Image
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=70&auto=format&fit=crop"
+          src="/media/ai/why_us_background.webp"
           alt=""
           fill
-          className="object-cover opacity-[0.12]"
+          className="object-cover opacity-[0.38]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(10,20,48,0.55)] to-[rgba(10,20,48,0.85)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(10,20,48,0.38)] to-[rgba(10,20,48,0.75)]" />
         <div className="pointer-events-none absolute -right-[10%] -top-[40%] h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,rgba(244,159,28,0.16),transparent_60%)]" />
 
         <Reveal>

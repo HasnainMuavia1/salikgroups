@@ -20,7 +20,7 @@ export function ProcessSection() {
           {processSteps.map((step, index) => (
             <Reveal key={step.step} delay={index * 100} className="h-full">
               <SurfaceCard className="flex h-full flex-col">
-                <div className="font-display text-[34px] font-extrabold leading-none text-sg-accent/35 sm:text-[46px]">
+                <div className="font-display text-[34px] font-extrabold leading-none text-sg-accent sm:text-[46px]">
                   {step.step}
                 </div>
                 <h4 className="mt-2.5 font-display text-base font-bold sm:mt-3.5 sm:text-lg">
